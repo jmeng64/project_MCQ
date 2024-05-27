@@ -2,3 +2,6 @@ openai
 langchain
 streamlit
 PyPDF2
+
+# the below line will search all local packages( folders with __init__.py) 
+-e .
