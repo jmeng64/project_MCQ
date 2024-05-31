@@ -14,6 +14,8 @@ from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 
 from langchain_openai import ChatOpenAI
+from langchain.callbacks import get_openai_callback
+
 
 # load env variables from the .env file. 
 load_dotenv() 
@@ -21,6 +23,8 @@ load_dotenv()
 mykey=os.environ["OPENAI_API_KEY"]
 # temperature   0 - more determinisic.   2 - more randomness 
 llm=ChatOpenAI(openai_api_key=mykey, model_name="gpt-3.5-turbo", temperature=0.7)
+
+
 
 template="""
 Text:{text}
@@ -66,6 +70,11 @@ file_path=r"G:\My Drive\backup jerry-200k(master copy)\AI\project_MCQ\data_geome
 with open(file_path, 'r') as file: 
     TEXT=file.read() 
     
+file_path=r"G:\My Drive\backup jerry-200k(master copy)\AI\project_MCQ\Response.json"
+
+with open(file_path, 'r') as file: 
+    RESPONSE_JSON=file.read() 
+
 
 NUMBER=5
 SUBJECT="Geometry" 

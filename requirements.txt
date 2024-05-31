@@ -1,7 +1,9 @@
 openai
 langchain
-streamlit
+streamlit 
+altair==4
 PyPDF2
+altair<5
 
 # the below line will search all local packages( folders with __init__.py) 
 -e .
