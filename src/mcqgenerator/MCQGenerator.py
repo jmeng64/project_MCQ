@@ -13,6 +13,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 
+from langchain_openai import ChatOpenAI
 
 # load env variables from the .env file. 
 load_dotenv() 
@@ -35,7 +36,7 @@ Ensure to make {number} MCQs
 
 quiz_generation_prompt = PromptTemplate(
     input_variables=["text", "number", "subject", "tone", "response_json"],
-    template=TEMPLATE
+    template=template 
     )
 
 quiz_chain = LLMChain(llm=llm, prompts=quiz_generation_prompt, output_key = "quiz", verbose = True)
@@ -51,7 +52,7 @@ Quiz_MCQs:
 Check from an expert English Writer of the above quiz:
 """
 
-quiz_evaluation_prompt = PromptTemplate(input_varibles = ["subject", "quiz"], template = template )
+quiz_evaluation_prompt = PromptTemplate(input_varibles = ["subject", "quiz"], template = template2 )
 
 review_chain = LLMChain(llm=llm, prompt=quiz_evaluation_prompt, output_key = "review", verbose = True)
 
@@ -82,7 +83,7 @@ with get_openai_callback() as cb:
             "tone": TONE,
             "response_json": json.dumps(RESPONSE_JSON)
         }
-        )
+    )
     
 
 
