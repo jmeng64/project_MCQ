@@ -5,14 +5,42 @@ import pandas as pd
 from dotenv import load_dotenv 
 from src.mcqgenerator.utils import read_file, get_table_data 
 import streamlit as st 
-from langchain.callbacks import get_openai_callback 
+from langchain_community.callbacks.manager import get_openai_callback
 from src.mcqgenerator.MCQGenerator import generate_evaluate_chain 
 from src.mcqgenerator.logger import logging 
 
-# loading json file
-
-with open('G:\My Drive\backup jerry-200k(master copy)\AI\project_MCQ\Response.json', 'r') as file: 
-    RESPONSE_JSON = json.load(file)
+RESPONSE_JSON = {
+    "1": {
+        "mcq": "multiple choice question",
+        "options": {
+            "a": "choice here",
+            "b": "choice here",
+            "c": "choice here",
+            "d": "choice here",
+        },
+        "correct": "correct answer",
+    },
+    "2": {
+        "mcq": "multiple choice question",
+        "options": {
+            "a": "choice here",
+            "b": "choice here",
+            "c": "choice here",
+            "d": "choice here",
+        },
+        "correct": "correct answer",
+    },
+    "3": {
+        "mcq": "multiple choice question",
+        "options": {
+            "a": "choice here",
+            "b": "choice here",
+            "c": "choice here",
+            "d": "choice here",
+        },
+        "correct": "correct answer",
+    },
+}
 
 # creating a title for the app 
 st.title("MCQs Creator Application with LanChain ")

@@ -16,4 +16,4 @@ logging.basicConfig(level=logging.INFO,
         format = '[%(asctime)s] %(lineno)d %(name)s - %(levelname)s = %(message)s'
 )
 
-print ( " i am here ")
+print ( " i am here in logger.py ")
