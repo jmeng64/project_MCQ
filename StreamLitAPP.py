@@ -64,7 +64,7 @@ with st.form("user_inputs"):
 
     # check if the button is clicked and all fields have input 
 
-    if button and uploaded_file is not None and mcq_count and subject and tone: 
+    if button is not None and mcq_count and subject and tone: 
         with st.spinner("loading ..."): 
             try: 
                 #text=read_file(uploaded_file)
@@ -74,7 +74,7 @@ with st.form("user_inputs"):
                         { 
                          #   "text": text, 
                             "number": mcq_count,
-                            "subject": subject 
+                            "subject": subject ,
                             "tone": tone ,
                             "response_json": json.dumps(RESPONSE_JSON)
                         }
