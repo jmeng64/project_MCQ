@@ -43,12 +43,12 @@ RESPONSE_JSON = {
 }
 
 # creating a title for the app 
-st.title("MCQs Creator Application with LanChain ")
+st.title("MCQs Creator Application with LangChain ")
 
 # creat a form using st.form 
 with st.form("user_inputs"): 
     # file upload 
-    uploaded_file = st.file_uploader("Upload a PDF or txt file")
+    #uploaded_file = st.file_uploader("Upload a PDF or txt file")
 
     # input fields 
     mcq_count=st.number_input("No. of MCQs", min_value = 3, max_value = 50) 
@@ -67,13 +67,14 @@ with st.form("user_inputs"):
     if button and uploaded_file is not None and mcq_count and subject and tone: 
         with st.spinner("loading ..."): 
             try: 
-                text=read_file(uploaded_file)
+                #text=read_file(uploaded_file)
                 # count tokens and the cost of API call 
                 with get_openai_callback() as cb : 
                     response = generate_evaluate_chain( 
                         { 
-                            "text": text, 
+                         #   "text": text, 
                             "number": mcq_count,
+                            "subject": subject 
                             "tone": tone ,
                             "response_json": json.dumps(RESPONSE_JSON)
                         }
