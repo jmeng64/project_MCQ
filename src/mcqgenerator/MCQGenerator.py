@@ -42,7 +42,11 @@ quiz_generation_prompt = PromptTemplate(
     template=template 
     )
 
-quiz_chain = LLMChain(llm=llm, prompts=quiz_generation_prompt, output_key = "quiz", verbose = True)
+quiz_chain = LLMChain(llm=llm, prompt=quiz_generation_prompt, output_key = "quiz", verbose = True)
+quiz_chain2 = quiz_generation_prompt | llm 
+
+#quiz_chain2.invoke(input_variables=["number", "subject", "tone", "response_json"], output_key = "quiz")
+
 
 template2="""
 You are an expert english grammarian and writer and an expert in the subject {subject} . Given a Multiple Choice Quiz for {subject} students.\
@@ -64,4 +68,5 @@ review_chain = LLMChain(llm=llm, prompt=quiz_evaluation_prompt, output_key = "re
 generate_evaluate_chain=SequentialChain(chains=[quiz_chain, review_chain], input_variables=["number", "subject", "tone", "response_json"],
                                         output_variables=["quiz", "review"], verbose=True)
 
+#generate_evaluate_chain2 = 
 

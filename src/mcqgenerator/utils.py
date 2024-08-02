@@ -33,15 +33,9 @@ def get_table_data(quiz_str):
         # iterate over the quiz dictionary and extract the required infomation 
         for key, value in quiz_dict.items() :
             mcq = value["mcq"]
-            options =" || ".join( 
-                [
-                f"{option}->{option_value}" for option, option_value in value["options"].items() 
-                ]
-            )
-
-        correct=value["correct"]
-
-        quiz_table_data.append({"MCQ": mcq, "Choices": options, "correct": correct})
+            options =" || ".join( [ f"{option}: {option_value}" for option, option_value in value["options"].items() ])
+            correct=value["correct"]
+            quiz_table_data.append({"Question #": key,"MCQ": mcq, "Choices": options, "correct": correct})
 
         return quiz_table_data
     

@@ -86,6 +86,7 @@ with st.form("user_inputs"):
                 st.error("Error")
 
             else: 
+                print(f"# of MCQs: {mcq_count}")
                 print(f"Total Tokens:{cb.total_tokens}")
                 print(f"Prompt Tokens: {cb.prompt_tokens}")
                 print(f"Completion Tokens: {cb.completion_tokens}")
@@ -95,12 +96,13 @@ with st.form("user_inputs"):
                     quiz=response.get("quiz", None)
                     if quiz is not None: 
                         table_data=get_table_data(quiz)
+                        
                         if table_data is not None: 
                             df = pd.DataFrame(table_data)
                             df.index += 1 
                             st.table(df)
                             #display  the review in a text box as well 
-                            st.text_area(lable="Review", value=response["review"])
+                            #st.text_area(label="Review", value=response["review"])
                         else:
                             st.error("Error in the table data")
                 else:
