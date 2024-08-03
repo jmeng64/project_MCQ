@@ -54,10 +54,15 @@ with st.form("user_inputs"):
     mcq_count=st.number_input("No. of MCQs", min_value = 3, max_value = 50) 
 
     #subject 
-    subject=st.text_input('Enter Subject:', max_chars=20)
+    subject=st.text_input('Enter Subject:', max_chars=50)
 
     #Quiz Tone 
-    tone = st.text_input('Complexity Level of Questions', max_chars=20, placeholder="Simple") 
+    #tone = st.text_input('Complexity Level of Questions', max_chars=20, placeholder="Simple") 
+
+    levels=["easy", "intermediate", "challenging", "very challenging"]
+    tone = st.selectbox("select a level", levels)
+
+    print (f"tone: {tone}")
 
     # Add button 
     button = st.form_submit_button("Create MCQs")
